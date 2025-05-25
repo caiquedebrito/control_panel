@@ -87,6 +87,7 @@ int main()
     panic_unsupported();
 }
 
+// Task para gerenciar a entrada de usuários, incrementando o contador com o botão A
 void vTaskEntrada(void *pvParameters)
 {
     gpio_init(BUTTON_A);
@@ -111,6 +112,7 @@ void vTaskEntrada(void *pvParameters)
     }
 }
 
+// Task para gerenciar a saída de usuários, decrementando o contador com o botão B
 void vTaskSaida(void *pvParameters)
 {
     gpio_init(BUTTON_B);
@@ -133,6 +135,7 @@ void vTaskSaida(void *pvParameters)
     }
 }
 
+// Task para gerenciar o reset do contador de usuários com o botão do joystick
 void vTaskReset(void *pvParameters)
 {
     gpio_init(JOYSTICK_BUTTON);
@@ -155,6 +158,7 @@ void vTaskReset(void *pvParameters)
     }
 }
 
+// Função para atualizar o display com o número de usuários e vagas disponíveis
 void feedback_update(void) {
     xSemaphoreTake(xDisplayMutex, portMAX_DELAY);
 
